@@ -5,16 +5,16 @@ from ..Serializers.user_serializer import UserSerializer
 from rest_framework import viewsets
 from ..permissions import HasTablePermission
 
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+# class UserViewSet(viewsets.ModelViewSet):
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
     # permission_classes = [HasTablePermission]
 
 
-# class UserListCreateView(generics.ListCreateAPIView):
+class UserListCreateView(generics.ListCreateAPIView):
 
-#     queryset = User.objects.all()
+    queryset = User.objects.all()
 
-#     serializer_class = UserSerializer
+    serializer_class = UserSerializer
 
     # permission_classes = [IsAuthenticated]

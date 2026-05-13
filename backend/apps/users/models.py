@@ -11,32 +11,20 @@ import uuid
 class Role(models.Model):
 
     ROLE_TYPES = (
-        ("superadmin", "Super Admin"),
-        ("admin", "Admin"),
-        ("manager", "Manager"),
-        ("worker", "Worker"),
+        ("Administrateur", "Administrateur"),
+        ("RH", "RH"),
+        ("Superviseur", "Superviseur"),
+        ("Contrôleur", "Contrôleur"),
+        ("Pompiste", "Pompiste"),
     )
-
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-
-    name = models.CharField(max_length=50, unique=True)
-
-    code = models.CharField(
-        max_length=50,
-        choices=ROLE_TYPES,
-        unique=True
-    )
-
-    description = models.TextField(blank=True)
-
+    code = models.CharField(max_length=50,choices=ROLE_TYPES,unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
-
     def __str__(self):
-        return self.name
+        return self.code
     
 
 class User(AbstractUser):
-
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     role = models.ForeignKey(
         Role,
@@ -44,13 +32,9 @@ class User(AbstractUser):
         null=True,
         related_name="users"
     )
-
     phone = models.CharField(max_length=20, blank=True)
-
     is_verified = models.BooleanField(default=False)
-
     created_at = models.DateTimeField(auto_now_add=True)
-
     def __str__(self):
         return self.username 
     def is_super_admin(self):

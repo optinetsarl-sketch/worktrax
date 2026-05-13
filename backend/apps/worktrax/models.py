@@ -1,31 +1,36 @@
+import uuid
 from django.db import models
 from apps.users.models import User
 
-### TABLE DES OUVRIERS ### 
-class Worker(models.Model):
-    GENDER = (
-        ("M", "Masculin"),
-        ("F", "Feminin"),
-    )
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    gender = models.CharField(max_length=1, choices=GENDER)
-    phone = models.CharField(max_length=20)
-    address = models.TextField(blank=True)
-    national_id = models.CharField(
-        max_length=100,
-        unique=True
-    )
-    salary_per_day = models.DecimalField(
-        max_digits=10,
-        decimal_places=2
-    )
+### TABLE DES TYPES D'OUVRIERS ### 
+class Type_Worker(models.Model):
+    nom = models.CharField(max_length=100,unique=True)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return self.nom
     
-    
+### TABLE DES TYPES DE CONTRATS ###    
+class TypeContrat(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    nom = models.CharField(max_length=50, unique=True)
+    description = models.TextField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.nom  
+
+### TABLE DES SOCIETES  ###    
+class Societe(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    nom = models.CharField(max_length=150,unique=True)
+    adresse = models.CharField(max_length=255)
+    telephone = models.CharField(max_length=20)
+    email = models.EmailField(unique=True)
+    date_creation = models.DateField()
+    def __str__(self):
+        return self.nom  
+       
 ### TABLE DES CHANTIERS  ###
 class Site(models.Model):
     STATUS = (
@@ -47,8 +52,20 @@ class Site(models.Model):
     )
     def __str__(self):
         return self.name
-    
 
+### TABLE DES OUVRIERS ### 
+class Worker(models.Model):
+    nom_complet = models.CharField(max_length=100)
+    phone = models.CharField(max_length=20)
+    type_worker = models.ForeignKey(Type_Worker,on_delete=models.CASCADE)
+    site = models.ForeignKey(Site,on_delete=models.CASCADE)
+    societe = models.ForeignKey(Societe,on_delete=models.CASCADE)
+    type_contrat = models.ForeignKey(TypeContrat,on_delete=models.CASCADE)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.nom_complet
+        
 ####  TABLE DES MACHINES  ###
 class Machine(models.Model):
     STATUS = (

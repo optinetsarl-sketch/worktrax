@@ -1,0 +1,11 @@
+# Environnement virtuel (Important pour votre dossier venv)
+venv/
+ENV/
+.env
+
+# Fichiers compilés de Python
+frontend/
+backend/venv/
+__pycache__/
+*.pyc
+backend/db.sqlite3

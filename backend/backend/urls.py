@@ -27,4 +27,5 @@ urlpatterns = [
     path('api/users/', include('apps.users.urls')),
     path('api/core/', include('apps.core.urls')),
     path('api/worktrax/', include('apps.worktrax.urls')),
+    path('api/fingerprint/', include('apps.fingerprint.urls')),
 ]

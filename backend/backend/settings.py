@@ -42,11 +42,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'apps.core',
     'apps.worktrax',
+    'apps.fingerprint',
+    "corsheaders",
 
 ]
 
 MIDDLEWARE = [
-    
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -80,14 +82,25 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': 'worktrax_db',
+        'ENFORCE_SCHEMA': False,
+        'CLIENT': {
+            # Pour une base locale :
+            'host': 'mongodb://localhost:8000/',
+            # OU pour MongoDB Atlas (Cloud) :
+            # 'host': 'mongodb+srv://<username>:<password>@cluster.mongodb.net/nom_de_votre_base?retryWrites=true&w=majority',
+        }
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
@@ -135,7 +148,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ######### les ajouts personnel #########
 AUTH_USER_MODEL = 'users.User'
-
+CORS_ALLOW_ALL_ORIGINS = True
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (

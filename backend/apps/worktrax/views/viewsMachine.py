@@ -4,8 +4,6 @@ from rest_framework.permissions import IsAuthenticated
 from ..models import Machine
 from ..Serializers.machine_serializer import MachineSerializer
 
-
-
 class MachineListAPIView(generics.ListAPIView):
     queryset = Machine.objects.all()
     serializer_class = MachineSerializer
