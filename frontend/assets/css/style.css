@@ -1,9 +1,12 @@
-/* Styles principaux WORKTRAX */
+/* WORKTRAX - Styles principaux */
 :root {
   --primary: #1a3c5e;
   --accent: #f97316;
-  /* ... autres variables ... */
+  --success: #16a34a;
+  --danger: #dc2626;
 }
+
+body { font-family: 'Segoe UI', system-ui, sans-serif; margin: 0; }
 
 #optinet-badge {
   position: fixed;
@@ -14,7 +17,12 @@
   padding: 8px 14px;
   border-radius: 6px;
   font-size: 11px;
-  z-index: 9999;
   text-decoration: none;
   box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  z-index: 9999;
+  border: 1px solid #00d4ff;
+}
+#optinet-badge:hover {
+  background: linear-gradient(135deg, #0099ff, #00d4ff);
+  color: #000;
 }
