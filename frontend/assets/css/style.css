@@ -1,0 +1,20 @@
+/* Styles principaux WORKTRAX */
+:root {
+  --primary: #1a3c5e;
+  --accent: #f97316;
+  /* ... autres variables ... */
+}
+
+#optinet-badge {
+  position: fixed;
+  bottom: 12px;
+  right: 16px;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 11px;
+  z-index: 9999;
+  text-decoration: none;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
