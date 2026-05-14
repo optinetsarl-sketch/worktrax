@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'apps.worktrax',
     'apps.fingerprint',
     "corsheaders",
+    'rest_framework_simplejwt.token_blacklist',
 
 ]
 
@@ -82,25 +83,25 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'worktrax_db',
-        'ENFORCE_SCHEMA': False,
-        'CLIENT': {
-            # Pour une base locale :
-            'host': 'mongodb://localhost:8000/',
-            # OU pour MongoDB Atlas (Cloud) :
-            # 'host': 'mongodb+srv://<username>:<password>@cluster.mongodb.net/nom_de_votre_base?retryWrites=true&w=majority',
-        }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'djongo',
+#         'NAME': 'worktrax_db',
+#         'ENFORCE_SCHEMA': False,
+#         'CLIENT': {
+#             # Pour une base locale :
+#             'host': 'mongodb://localhost:8000/',
+#             # OU pour MongoDB Atlas (Cloud) :
+#             # 'host': 'mongodb+srv://<username>:<password>@cluster.mongodb.net/nom_de_votre_base?retryWrites=true&w=majority',
+#         }
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 

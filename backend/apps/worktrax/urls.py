@@ -54,7 +54,6 @@ urlpatterns = [
     path("type-contrats/<uuid:pk>/", TypeContratDetailView.as_view(),name='type_contrat_detail'),
     path("type-contrats/update/<uuid:pk>/", TypeContratUpdateView.as_view(),name='type_contrat_update'),
     path("type-contrats/delete/<uuid:pk>/", TypeContratDeleteView.as_view(),name='type_contrat_delete'),
-
     # SOCIETE
     path("societes/", SocieteListCreateView.as_view(),name='societe_list_create'),
     path("societes/<uuid:pk>/", SocieteDetailView.as_view(),name='societe_detail'),

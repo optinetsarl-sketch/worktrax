@@ -4,9 +4,6 @@ from ..models import Role
 from ..Serializers.role_serializer import RoleSerializer
 
 class RoleListCreateView(generics.ListCreateAPIView):
-
     queryset = Role.objects.all()
-
     serializer_class = RoleSerializer
-
     # permission_classes = [IsAuthenticated]

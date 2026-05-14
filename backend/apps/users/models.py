@@ -1,15 +1,12 @@
 from django.db import models
-
 # Create your models here.
 from django.db import models
 import uuid
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 import uuid
 
-
 class Role(models.Model):
-
     ROLE_TYPES = (
         ("Administrateur", "Administrateur"),
         ("RH", "RH"),
@@ -22,7 +19,6 @@ class Role(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.code
-    
 
 class User(AbstractUser):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -38,23 +34,22 @@ class User(AbstractUser):
     def __str__(self):
         return self.username 
     def is_super_admin(self):
-        return self.role and self.role.name == "super_admin"   
+        return self.role and self.role.name == "super_admin"
     
 
 ### Permission par TABLE ###
-class Permission(models.Model):
-    role = models.ForeignKey(Role, on_delete=models.CASCADE)
-    table_name = models.CharField(max_length=100)
+# class Permission(models.Model):
+#     role = models.ForeignKey(Role, on_delete=models.CASCADE)
+#     table_name = models.CharField(max_length=100)
+#     can_view = models.BooleanField(default=False)
+#     can_create = models.BooleanField(default=False)
+#     can_update = models.BooleanField(default=False)
+#     can_delete = models.BooleanField(default=False)
 
-    can_view = models.BooleanField(default=False)
-    can_create = models.BooleanField(default=False)
-    can_update = models.BooleanField(default=False)
-    can_delete = models.BooleanField(default=False)
+# ### Permission par colonne ###
+# class ColumnPermission(models.Model):
+#     role = models.ForeignKey(Role, on_delete=models.CASCADE)
+#     table_name = models.CharField(max_length=100)
+#     column_name = models.CharField(max_length=100)
 
-### Permission par colonne ###
-class ColumnPermission(models.Model):
-    role = models.ForeignKey(Role, on_delete=models.CASCADE)
-    table_name = models.CharField(max_length=100)
-    column_name = models.CharField(max_length=100)
-
-    can_view = models.BooleanField(default=True)        
+#     can_view = models.BooleanField(default=True)        
