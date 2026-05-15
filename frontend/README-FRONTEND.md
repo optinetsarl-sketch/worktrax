@@ -1,23 +1,23 @@
-# 🎯 WORKTRAX - Frontend
+# WORKTRAX — Frontend React
 
-**Système de Gestion Multisites pour OPTINET SARLU**
+Interface React/Vite pour la maquette WORKTRAX d'OPTINET SARLU.
 
----
+## Modules couverts
 
-## Structure des Interfaces
+- Connexion avec sélection de rôle : Administrateur, RH, Superviseur, Contrôleur, Pompiste.
+- Layout principal avec sidebar dynamique, topbar et horloge temps réel.
+- Tableau de bord administrateur avec KPI, graphiques CSS et activités récentes.
+- Ouvriers : catégories, recherche, filtres, tableau, modal d'ajout en 3 étapes et fiche ouvrier.
+- Engins : onglets Camions, Machines, Carburant & Pompistes.
+- Pointage, Caméras, Absences & Congés, Paie, Rapports et Utilisateurs.
+- Espaces spécialisés RH, Superviseur, Terminal Contrôleur et Terminal Pompiste.
 
-### Pages principales :
+## Commandes prévues
 
-- `index.html` → Point d'entrée
-- Dashboard
-- Ouvriers
-- Engins (Camions / Machines / Carburant)
-- Pointage
-- Terminal Pompiste
-- RH (Absences & Paie)
-- Caméras
-- Rapports
+```bash
+npm install
+npm run dev
+npm run build
+```
 
-Voir le guide utilisateur pour le détail des interfaces.
-
-**Badge OPTINET intégré dans tous les écrans.**
+> Note : dans l'environnement de génération actuel, l'accès au registre npm renvoie `403 Forbidden`; les dépendances n'ont donc pas pu être installées ici.
