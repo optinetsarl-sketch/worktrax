@@ -17,6 +17,7 @@ import { SupervisorDashboardPage } from './pages/roles/SupervisorDashboardPage.j
 import { ControllerTerminalPage } from './pages/roles/ControllerTerminalPage.jsx';
 import { ControllerJournalPage } from './pages/roles/ControllerJournalPage.jsx';
 import { PompisteHistoryPage } from './pages/roles/PompisteHistoryPage.jsx';
+import { getCurrentUser, logout } from './services/authApi.js';
 
 function renderPage(page) {
   switch (page) {
@@ -41,15 +42,17 @@ function renderPage(page) {
 }
 
 export default function App() {
-  const [role, setRole] = useState(null);
-  const [page, setPage] = useState('dashboard');
+  const storedUser = getCurrentUser();
+  const initialRole = storedUser?.role && ROLES[storedUser.role] ? storedUser.role : null;
+  const [role, setRole] = useState(initialRole);
+  const [page, setPage] = useState(initialRole ? ROLES[initialRole].defaultPage : 'dashboard');
 
   if (!role) {
-    return <LoginPage onLogin={(nextRole) => { setRole(nextRole); setPage(ROLES[nextRole].defaultPage); }} />;
+    return <LoginPage onLogin={(session) => { const nextRole = session.user.role; setRole(nextRole); setPage(ROLES[nextRole].defaultPage); }} />;
   }
 
   return (
-    <AppLayout role={role} page={page} onNavigate={setPage} onLogout={() => setRole(null)}>
+    <AppLayout role={role} page={page} onNavigate={setPage} onLogout={() => { logout(); setRole(null); }}>
       {renderPage(page)}
     </AppLayout>
   );

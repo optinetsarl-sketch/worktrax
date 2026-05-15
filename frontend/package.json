@@ -11,7 +11,8 @@
   "dependencies": {
     "vite": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "axios": "latest"
   },
   "devDependencies": {}
 }
