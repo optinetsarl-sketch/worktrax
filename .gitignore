@@ -4,7 +4,8 @@ ENV/
 .env
 
 # Fichiers compilés de Python
-frontend/
+frontend/node_modules/
+frontend/dist/
 backend/venv/
 __pycache__/
 *.pyc
