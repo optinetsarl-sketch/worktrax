@@ -1,7 +1,10 @@
 from django.urls import path
 
+# pyrefly: ignore [missing-import]
 from .views.viewsLogin import LoginView, LogoutView
+# pyrefly: ignore [missing-import]
 from .views.viewsUser import UserCreateView, UserListView
+# pyrefly: ignore [missing-import]
 from .views.viewsRole import RoleListCreateView
 
 urlpatterns = [

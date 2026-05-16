@@ -1,5 +1,6 @@
 import uuid
 from django.db import models
+# pyrefly: ignore [missing-import]
 from apps.users.models import User
 
 ### TABLE DES TYPES D'OUVRIERS ### 

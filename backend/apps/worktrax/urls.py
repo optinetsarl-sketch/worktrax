@@ -1,15 +1,18 @@
 from django.urls import path
-
+# pyrefly: ignore [missing-import]
 from .views.viewsSociete import SocieteDeleteView, SocieteDetailView, SocieteListCreateView, SocieteUpdateView
+# pyrefly: ignore [missing-import]
 from .views.viewsTypeContrat import TypeContratCreateView, TypeContratDeleteView, TypeContratDetailView, TypeContratListView, TypeContratUpdateView
 
+# pyrefly: ignore [missing-import]
 from .views.viewsTypeWorker import (
     TypeWorkerDeleteView, 
     TypeWorkerDetailView,
     TypeWorkerCreateView,
     TypeWorkerListView,
-     TypeWorkerUpdateView
+    TypeWorkerUpdateView
 )
+# pyrefly: ignore [missing-import]
 from .views.viewsWorkers import (
     WorkerDeleteAPIView,
     WorkerDetailAPIView,
@@ -17,7 +20,7 @@ from .views.viewsWorkers import (
     WorkerCreateAPIView,
     WorkerListAPIView
 )
-
+# pyrefly: ignore [missing-import]
 from .views.viewsSite import (
     SiteDeleteAPIView,
     SiteDetailAPIView,
@@ -26,6 +29,7 @@ from .views.viewsSite import (
     SiteListAPIView
 )
 
+# pyrefly: ignore [missing-import]
 from .views.viewsMachine import (
     MachineDeleteAPIView,
     MachineDetailAPIView,
@@ -33,7 +37,7 @@ from .views.viewsMachine import (
     MachineCreateAPIView,
     MachineListAPIView
 )
-
+# pyrefly: ignore [missing-import]
 from .views.viewsWorkerAssignment import (
     WorkerAssignmentListAPIView,
     WorkerAssignmentCreateAPIView,

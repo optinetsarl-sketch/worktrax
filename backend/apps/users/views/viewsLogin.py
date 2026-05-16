@@ -1,4 +1,5 @@
 # apps/users/views/login_view.py
+# pyrefly: ignore [missing-import]
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -27,8 +28,6 @@ class LoginView(APIView):
             "username": user.username,
         })
     
-
-
 
 class LogoutView(APIView):
     def post(self, request):

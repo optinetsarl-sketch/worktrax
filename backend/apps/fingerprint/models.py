@@ -1,6 +1,9 @@
 # Create your models here.
+# pyrefly: ignore [missing-import]
 from django.db import models
+# pyrefly: ignore [missing-import]
 from apps.worktrax.models import Worker
+# pyrefly: ignore [missing-import]
 from apps.users.models import User
 
 ##### Pour enregistrer les EMPREINTES DIGITALES des Ouvriere #####
@@ -9,9 +12,10 @@ class OuvrierFingerprint(models.Model):
         Worker,
         on_delete=models.CASCADE
     )
+    
+    face_encoding = models.BinaryField(null=True, blank=True)
     # Encodage facial : Liste de 128 nombres stockée en JSON
     # face_encoding = models.JSONField(null=True, blank=True)
-    face_encoding = models.BinaryField(null=True, blank=True)
     # fingerprint_template = models.BinaryField()
     # photo_reference = models.ImageField(upload_to='profiles/', null=True)
     created_at = models.DateTimeField(
